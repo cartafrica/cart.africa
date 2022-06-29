@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./Cart.css";
 import { CreditCardIcon, LocationMarkerIcon } from "@heroicons/react/outline";
+import { Link } from "react-router-dom";
 
 const Cart = () => (
   <div className="bg-white flex flex-grow lg:p-24 justify-center items-start">
@@ -119,8 +120,7 @@ const Cart = () => (
           </li>
           <li className="flex items-center space-x-2">
             <div className="rounded-full bg-slate-200 p-1 text-century">
-            <CreditCardIcon className="h-6 w-6 text-century" />
-
+              <CreditCardIcon className="h-6 w-6 text-century" />
             </div>
             <p className="text-sm text-gray-600 flex-1">**** **** **** 4920</p>
             <a href="payment.html" className="text-sm text-red-600">
@@ -140,13 +140,14 @@ const Cart = () => (
             <p className="text-sm text-gray-600">N3,031,000</p>
           </li>
         </ul>
-
-        <button
-          className="bg-century w-full text-white my-3 py-3 px-4 rounded focus:outline-none focus:shadow-outline"
-          type="submit"
-        >
-          Checkout
-        </button>
+        <Link to="/dashboard/orders">
+          <button
+            className="bg-century w-full text-white my-3 py-3 px-4 rounded focus:outline-none focus:shadow-outline"
+            type="submit"
+          >
+            Checkout
+          </button>
+        </Link>
         <p className="text-gray-500 text-sm text-center">
           We'll attempt to charge your selected payment method and send your
           order details to vendor to process your order.
