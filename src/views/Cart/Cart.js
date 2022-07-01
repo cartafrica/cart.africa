@@ -16,7 +16,7 @@ const Cart = () => (
           </a>
         </div>
       </div>
-      <ul className="bg-slate-100 max-h-120 overflow-scroll">
+      <ul className="bg-slate-100 max-h-120">
         <li className="flex items-center space-x-4 p-4 border-b border-slate-300">
           <div className="shrink-0">
             <img
@@ -30,76 +30,6 @@ const Cart = () => (
             <small>Qty: 3</small>
           </div>
           <h4 className="text-gray-800">N3,000,000</h4>
-        </li>
-        <li className="flex items-center space-x-4 p-4 border-b border-slate-300">
-          <div className="shrink-0">
-            <img
-              src="https://tailwindcss.com/_next/static/media/classic-utility-jacket.0f108046e151c8576017eaf383406fe6.jpg"
-              className="rounded-full w-16 h-16"
-              alt=""
-            />
-          </div>
-          <div className="flex-1">
-            <h4 className="text-gray-800">The Essential Kit</h4>
-            <small>Qty: 3</small>
-          </div>
-          <h4 className="text-gray-800">N30,000</h4>
-        </li>
-        <li className="flex items-center space-x-4 p-4 border-b border-slate-300">
-          <div className="shrink-0">
-            <img
-              src="https://tailwindcss.com/_next/static/media/classic-utility-jacket.0f108046e151c8576017eaf383406fe6.jpg"
-              className="rounded-full w-16 h-16"
-              alt=""
-            />
-          </div>
-          <div className="flex-1">
-            <h4 className="text-gray-800">The Essential Kit</h4>
-            <small>Qty: 3</small>
-          </div>
-          <h4 className="text-gray-800">N30,000</h4>
-        </li>
-        <li className="flex items-center space-x-4 p-4 border-b border-slate-300">
-          <div className="shrink-0">
-            <img
-              src="https://tailwindcss.com/_next/static/media/classic-utility-jacket.0f108046e151c8576017eaf383406fe6.jpg"
-              className="rounded-full w-16 h-16"
-              alt=""
-            />
-          </div>
-          <div className="flex-1">
-            <h4 className="text-gray-800">The Essential Kit</h4>
-            <small>Qty: 3</small>
-          </div>
-          <h4 className="text-gray-800">N30,000</h4>
-        </li>
-        <li className="flex items-center space-x-4 p-4 border-b border-slate-300">
-          <div className="shrink-0">
-            <img
-              src="https://tailwindcss.com/_next/static/media/classic-utility-jacket.0f108046e151c8576017eaf383406fe6.jpg"
-              className="rounded-full w-16 h-16"
-              alt=""
-            />
-          </div>
-          <div className="flex-1">
-            <h4 className="text-gray-800">The Essential Kit</h4>
-            <small>Qty: 3</small>
-          </div>
-          <h4 className="text-gray-800">N30,000</h4>
-        </li>
-        <li className="flex items-center space-x-4 p-4 border-b border-slate-300">
-          <div className="shrink-0">
-            <img
-              src="https://tailwindcss.com/_next/static/media/classic-utility-jacket.0f108046e151c8576017eaf383406fe6.jpg"
-              className="rounded-full w-16 h-16"
-              alt=""
-            />
-          </div>
-          <div className="flex-1">
-            <h4 className="text-gray-800">The Essential Kit</h4>
-            <small>Qty: 3</small>
-          </div>
-          <h4 className="text-gray-800">N30,000</h4>
         </li>
       </ul>
       <div className="p-6">

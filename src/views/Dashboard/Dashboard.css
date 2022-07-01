@@ -1,0 +1,4 @@
+.h-screen {
+    max-height: fill-available;
+    max-height: -webkit-fill-available;
+}

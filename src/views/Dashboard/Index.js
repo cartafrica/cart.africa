@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useParams } from "react-router-dom";
-
+import './Dashboard.css'
 import FooterNav from "components/FooterNav/FooterNav";
 import Header from "components/Header/Header";
 import Orders from "./Orders";

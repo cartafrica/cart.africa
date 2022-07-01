@@ -1,22 +1,103 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
+import countries from "assets/countries.json";
+import { CheckIcon, ChevronDownIcon } from "@heroicons/react/outline";
+import "./LoginForm.css";
 
 const LoginForm = (props) => {
+  const [countrySelect, setCountrySelect] = useState(false);
+  const [selected, setSelected] = useState(countries[0]);
+
+  const toggleCountrySelect = () => {
+    setCountrySelect(!countrySelect);
+  };
+  const handleCountrySelect = (selectedCountry) => {
+    setSelected(selectedCountry);
+    toggleCountrySelect();
+  };
+
   return (
     <div className="w-full lg:w-96">
       <h1 className="text-3xl text-center">Get Started</h1>
+
       <form className="mt-4">
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm mb-2" htmlFor="email">
-            Email Address
+          <label
+            id="listbox-label"
+            className="block text-sm text-gray-700"
+          >
+            Phone Number
           </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="email"
-            type="text"
-            placeholder="Enter your email"
-          />
+          <div className="mt-2 flex">
+            <button
+              type="button"
+              onClick={toggleCountrySelect}
+              className="relative bg-white border-b border-gray-200 focus:ring-0 pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-0 focus:ring-century focus:border-century sm:text-sm"
+              aria-haspopup="listbox"
+              aria-expanded="true"
+              aria-labelledby="listbox-label"
+            >
+              <span className="flex items-center">
+                <img
+                  src={`https://flagcdn.com/16x12/${selected.code.toLowerCase()}.png`}
+                  alt={selected.name}
+                  width={16}
+                  height={12}
+                />
+                <span className="ml-3 block truncate">
+                  {selected.dial_code}
+                </span>
+              </span>
+              <span className="ml-3 absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+                <ChevronDownIcon className="h-5 w-5" />
+              </span>
+            </button>
+
+            <input
+              type="number"
+              name="phone"
+              id="phone"
+              className="focus:ring-century focus:border-century sm:text-sm border-b border-gray-200 focus:ring-0 flex-1 border-r-0 border-t-0"
+              placeholder=""
+            />
+
+            <ul
+              className={`absolute ${
+                countrySelect ? "" : "hidden"
+              } z-10 w-72 bg-white shadow-lg max-h-56 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm`}
+              tabIndex="-1"
+              role="listbox"
+              aria-labelledby="listbox-label"
+              aria-activedescendant="listbox-option-3"
+            >
+              {countries.map((country, index) => (
+                <li
+                  key={index}
+                  className={`text-gray-900 cursor-default select-none relative py-2 pl-3 pr-9 hover:bg-indigo-600 hover:text-white`}
+                  onClick={() => handleCountrySelect(country)}
+                >
+                  <div className="flex items-center">
+                    <img
+                      src={`https://flagcdn.com/16x12/${country.code.toLowerCase()}.png`}
+                      alt={country.name}
+                      width={16}
+                      height={12}
+                    />
+                    <span className="font-normal ml-3 block truncate">
+                      {country.name}
+                    </span>
+                  </div>
+                  {selected === country && (
+                    <span className="text-indigo-600 absolute inset-y-0 right-0 flex items-center pr-4 hover:text-white">
+                      <CheckIcon className="h-5 w-5" />
+                    </span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
+
         <button
           className="bg-century w-full text-white mb-3 py-3 px-4 rounded focus:outline-none focus:shadow-outline"
           type="button"
@@ -25,9 +106,12 @@ const LoginForm = (props) => {
           Sign In
         </button>
         <small className="text-gray-500">
-          No passwords! We'll send a One Time Password to your email and that's
-          how we confirm it's really you. Didn't get a mail?{" "}
-          <a href="mailto:support@cart.africa" className="text-century font-bold">
+          We'll send a One Time Password to your phone and that's how we confirm
+          it's really you. Didn't get a code?{" "}
+          <a
+            href="mailto:support@cart.africa"
+            className="text-century font-bold"
+          >
             Contact support
           </a>
           .
