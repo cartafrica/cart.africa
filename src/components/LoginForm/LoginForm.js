@@ -22,10 +22,7 @@ const LoginForm = (props) => {
 
       <form className="mt-4">
         <div className="mb-4">
-          <label
-            id="listbox-label"
-            className="block text-sm text-gray-700"
-          >
+          <label id="listbox-label" className="block text-sm text-gray-700">
             Phone Number
           </label>
           <div className="mt-2 flex">
@@ -107,14 +104,7 @@ const LoginForm = (props) => {
         </button>
         <small className="text-gray-500">
           We'll send a One Time Password to your phone and that's how we confirm
-          it's really you. Didn't get a code?{" "}
-          <a
-            href="mailto:support@cart.africa"
-            className="text-century font-bold"
-          >
-            Contact support
-          </a>
-          .
+          it's really you.
         </small>
       </form>
     </div>

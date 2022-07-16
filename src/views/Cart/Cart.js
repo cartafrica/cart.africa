@@ -12,7 +12,7 @@ const Cart = () => (
         <div className="text-right">
           <p className="text-gray-700 font-bold">Sneaklin Store</p>
           <a href="button" className="text-gray-700 text-sm">
-            Call Vendor
+            Return Policy
           </a>
         </div>
       </div>

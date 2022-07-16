@@ -2,13 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const AddDeliveryForm = (props) => (
-  <form className="lg:w-1/3 w-full">
+  <form className="lg:w-1/2 m-auto w-full">
     <div className="mb-3">
       <label className="block text-gray-700 text-sm mb-2" htmlFor="name">
         Fullname
       </label>
       <input
-        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        className="appearance-none border-0 border-b border-gray-200 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:ring-century focus:border-century"
         id="name"
         type="text"
       />
@@ -18,7 +18,7 @@ const AddDeliveryForm = (props) => (
         Phone Number
       </label>
       <input
-        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        className="appearance-none border-0 border-b border-gray-200 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:ring-century focus:border-century"
         id="phone"
         type="text"
       />
@@ -28,7 +28,7 @@ const AddDeliveryForm = (props) => (
         Address
       </label>
       <input
-        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        className="appearance-none border-0 border-b border-gray-200 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:ring-century focus:border-century"
         id="address"
         type="text"
       />
@@ -38,7 +38,7 @@ const AddDeliveryForm = (props) => (
         City
       </label>
       <input
-        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        className="appearance-none border-0 border-b border-gray-200 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:ring-century focus:border-century"
         id="city"
         type="text"
       />
@@ -48,7 +48,7 @@ const AddDeliveryForm = (props) => (
         State
       </label>
       <input
-        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        className="appearance-none border-0 border-b border-gray-200 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:ring-century focus:border-century"
         id="state"
         type="text"
       />
@@ -56,6 +56,7 @@ const AddDeliveryForm = (props) => (
     <button
       className="bg-century w-full text-white mb-3 py-3 px-4 rounded focus:outline-none focus:shadow-outline"
       type="button"
+      onClick={props.handle}
     >
       Save
     </button>
