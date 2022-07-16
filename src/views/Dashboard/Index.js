@@ -10,7 +10,7 @@ import AccountIndex from "./Account/Index";
 const Dashboard = () => {
   const { page, subpage } = useParams();
   return (
-    <div className="bg-white flex flex-col h-screen">
+    <div className="bg-white dark:bg-gray-800 flex flex-col h-screen">
       <Header page={page} />
       <main className="flex-1 overflow-y-auto">
         {page === "orders" && <Orders />}

@@ -1,6 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { ExclamationCircleIcon } from "@heroicons/react/outline";
+import {
+  CreditCardIcon,
+  ExclamationCircleIcon,
+  InformationCircleIcon,
+  LocationMarkerIcon,
+  PlusCircleIcon,
+} from "@heroicons/react/outline";
 import empty from "assets/empty.png";
 import { Link } from "react-router-dom";
 
@@ -191,7 +197,7 @@ const Orders = () => {
       ],
     },
   ];
-  // orders = []
+  // orders = [];
 
   const statusColor = (status) => {
     switch (status) {
@@ -208,11 +214,25 @@ const Orders = () => {
     }
   };
   return (
-    <>
+    <div className="h-full">
+      <div className="bg-yellow-300 mx-3 rounded-lg p-3 flex space-x-2 shadow-md mb-3">
+        <LocationMarkerIcon className="h-6" />
+        <div className="flex flex-col">
+          You have not added a delivery address.
+          <Link to="/dashboard/account/add-delivery" className="font-semibold">Add Address</Link>
+        </div>
+      </div>
+      <div className="bg-yellow-300 mx-3 rounded-lg p-3 flex space-x-2 shadow-md mb-2">
+        <CreditCardIcon className="h-6" />
+        <div className="flex flex-col">
+          You have not added a payment method.
+          <Link to="/dashboard/account/add-delivery" className="font-semibold">Add Card</Link>
+        </div>
+      </div>
       {orders.length < 1 ? (
         <div className="flex items-center justify-center flex-col h-full">
           <img src={empty} alt="No purchase yet" className="mb-4" />
-          <p>
+          <p className=" dark:text-white">
             <strong>Uh-oh!</strong> You have not made any purchase.
           </p>
         </div>
@@ -260,7 +280,7 @@ const Orders = () => {
                         >
                           {order.status}
                         </p>
-                        <p className="text-gray-900 font-bold text-sm line-clamp-2">
+                        <p className="text-gray-900  dark:text-white font-bold text-sm line-clamp-2">
                           {order.store.name} -{" "}
                           {order.cart.map((item, index) => {
                             return (
@@ -280,7 +300,7 @@ const Orders = () => {
           </ul>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
