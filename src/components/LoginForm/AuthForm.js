@@ -43,13 +43,9 @@ const AuthForm = (props) => {
             setError("Error");
           } else {
             setAuth(response.data);
-            apiPrivate
-              .get("account/me/info", {
-                withCredentials: true,
-              })
-              .then((response) => {
-                console.log(response.data);
-              });
+            apiPrivate.get("account/me/info").then((response) => {
+              console.log(response.data);
+            });
             // navigate(from, { replace: true });
           }
           console.log(response.data.token);
