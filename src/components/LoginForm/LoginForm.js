@@ -24,7 +24,8 @@ const LoginForm = (props) => {
     toggleCountrySelect();
   };
 
-  const handleLogin = () => {
+  const handleLogin = (e) => {
+    e.preventDefault();
     console.log(selected.dial_code + props.phone);
     if (props.phone === "") {
       setError("Phone number is required.");
@@ -58,7 +59,7 @@ const LoginForm = (props) => {
           <div className="flex flex-col">Oops! {error}</div>
         </div>
       )}
-      <form className="mt-4">
+      <form className="mt-4" onSubmit={handleLogin}>
         <div className="mb-4">
           <label id="listbox-label" className="block text-sm text-gray-700">
             Phone Number
@@ -138,8 +139,7 @@ const LoginForm = (props) => {
 
         <button
           className="bg-century w-full text-white mb-3 py-3 px-4 rounded focus:outline-none focus:shadow-outline"
-          type="button"
-          onClick={handleLogin}
+          type="submit"
           disabled={loading}
         >
           {loading ? (

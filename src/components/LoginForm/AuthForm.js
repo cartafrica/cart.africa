@@ -5,15 +5,13 @@ import useToken from "services/useToken";
 import { useLocation, useNavigate } from "react-router-dom";
 import { completeLogin } from "services/network/lib/auth";
 import useAuth from "hooks/useAuth";
-import useApiPrivate from "hooks/useApiPrivate";
-
+import { apiPrivate } from "services/network/apiClient";
 const AuthForm = (props) => {
   const { setAuth } = useAuth();
   const lineIndex = props.index;
   const numerOfInputs = props?.numerOfInputs || 6;
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const apiPrivate = useApiPrivate();
 
   const [inputRefsArray] = useState(() =>
     Array.from({ length: numerOfInputs }, () => createRef())
@@ -27,7 +25,8 @@ const AuthForm = (props) => {
   let location = useLocation();
   const from = location.state?.from?.pathname || "/dashboard/orders";
 
-  const handleCompleteLogin = () => {
+  const handleCompleteLogin = (e) => {
+    e.preventDefault();
     console.log(letters);
     if (letters.length < 6) {
       setError("Error with code.");
@@ -44,9 +43,13 @@ const AuthForm = (props) => {
             setError("Error");
           } else {
             setAuth(response.data);
-            apiPrivate.get("account/me/info").then((response) => {
-              console.log(response.data);
-            });
+            apiPrivate
+              .get("account/me/info", {
+                withCredentials: true,
+              })
+              .then((response) => {
+                console.log(response.data);
+              });
             // navigate(from, { replace: true });
           }
           console.log(response.data.token);
@@ -92,7 +95,7 @@ const AuthForm = (props) => {
           <div className="flex flex-col">Oops! {error}</div>
         </div>
       )}
-      <form className="mt-4">
+      <form className="mt-4" onSubmit={handleCompleteLogin}>
         <div className="flex space-x-2 h-12 mb-4">
           {inputRefsArray.map((ref, index) => {
             return (
@@ -132,9 +135,8 @@ const AuthForm = (props) => {
 
         <button
           className="bg-century w-full text-white mb-3 py-3 px-4 rounded focus:outline-none focus:shadow-outline"
-          type="button"
+          type="submit"
           disabled={loading}
-          onClick={handleCompleteLogin}
         >
           {loading ? (
             <svg
