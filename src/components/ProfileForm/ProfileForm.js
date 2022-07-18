@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 
 const ProfileForm = (props) => (
-  <form className="w-full lg:w-1/2 m-auto">
+  <form className="w-full lg:w-3/4 xl:w-1/2 m-auto">
   <div className="mb-3">
     <label className="block text-gray-700 text-sm mb-2" htmlFor="firstname">
       First Name

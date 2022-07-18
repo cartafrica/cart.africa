@@ -16,7 +16,7 @@ const Cart = () => (
           </a>
         </div>
       </div>
-      <ul className="bg-slate-100 max-h-120">
+      <ul className="bg-slate-100">
         <li className="flex items-center space-x-4 p-4 border-b border-slate-300">
           <div className="shrink-0">
             <img

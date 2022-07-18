@@ -9,8 +9,9 @@ import {
 } from "@heroicons/react/outline";
 import empty from "assets/empty.png";
 import { Link } from "react-router-dom";
+import Order from "./Order";
 
-const Orders = () => {
+const Orders = (props) => {
   var orders = [
     {
       id: "0",
@@ -213,95 +214,107 @@ const Orders = () => {
         return "text-gray-500";
     }
   };
-  return (
-    <div className="h-full">
-      <div className="bg-yellow-300 mx-3 rounded-lg p-3 flex space-x-2 shadow-md mb-3">
-        <LocationMarkerIcon className="h-6" />
-        <div className="flex flex-col">
-          You have not added a delivery address.
-          <Link to="/dashboard/account/add-delivery" className="font-semibold">Add Address</Link>
+  if (!props.order)
+    return (
+      <div className="h-full">
+        <div className="bg-yellow-300 mx-3 rounded-lg p-3 flex space-x-2 shadow-md mb-3">
+          <LocationMarkerIcon className="h-6" />
+          <div className="flex flex-col">
+            You have not added a delivery address.
+            <Link
+              to="/dashboard/account/add-delivery"
+              className="font-semibold"
+            >
+              Add Address
+            </Link>
+          </div>
         </div>
-      </div>
-      <div className="bg-yellow-300 mx-3 rounded-lg p-3 flex space-x-2 shadow-md mb-2">
-        <CreditCardIcon className="h-6" />
-        <div className="flex flex-col">
-          You have not added a payment method.
-          <Link to="/dashboard/account/add-delivery" className="font-semibold">Add Card</Link>
+        <div className="bg-yellow-300 mx-3 rounded-lg p-3 flex space-x-2 shadow-md mb-2">
+          <CreditCardIcon className="h-6" />
+          <div className="flex flex-col">
+            You have not added a payment method.
+            <Link
+              to="/dashboard/account/add-delivery"
+              className="font-semibold"
+            >
+              Add Card
+            </Link>
+          </div>
         </div>
-      </div>
-      {orders.length < 1 ? (
-        <div className="flex items-center justify-center flex-col h-full">
-          <img src={empty} alt="No purchase yet" className="mb-4" />
-          <p className=" dark:text-white">
-            <strong>Uh-oh!</strong> You have not made any purchase.
-          </p>
-        </div>
-      ) : (
-        <div className="">
-          <ul className="divide-y divide-gray-200">
-            {orders.map((order, index) => {
-              return (
-                <li className="" key={index}>
-                  <Link to={"/dashboard/orders/" + order.id}>
-                    <div className="flex p-5" key={index}>
-                      <div className="flex-none">
-                        <div
-                          className={`grid ${
-                            order.cart.length > 1 && "grid-cols-2"
-                          } gap-1 rounded-xl w-20`}
-                        >
-                          {order.cart.slice(0, 4).map((item, index) => {
-                            let height;
-                            if (order.cart.length < 3) height = "h-20";
-                            if (order.cart.length === 3)
-                              height = "h-10 last:col-span-2";
-                            if (order.cart.length > 3) height = "h-10";
-                            return (
-                              <div
-                                className={`w-full bg-yellow-300 ` + height}
-                                key={index}
-                              >
-                                <img
-                                  src={item.photo}
-                                  alt="s"
-                                  className="h-full w-full object-cover"
-                                />
-                              </div>
-                            );
-                          })}
+        {orders.length < 1 ? (
+          <div className="flex items-center justify-center flex-col h-full">
+            <img src={empty} alt="No purchase yet" className="mb-4" />
+            <p className=" dark:text-white">
+              <strong>Uh-oh!</strong> You have not made any purchase.
+            </p>
+          </div>
+        ) : (
+          <div className="">
+            <ul className="divide-y divide-gray-200">
+              {orders.map((order, index) => {
+                return (
+                  <li className="" key={index}>
+                    <Link to={"/dashboard/orders/" + order.id}>
+                      <div className="flex p-5" key={index}>
+                        <div className="flex-none">
+                          <div
+                            className={`grid ${
+                              order.cart.length > 1 && "grid-cols-2"
+                            } gap-1 rounded-xl w-20`}
+                          >
+                            {order.cart.slice(0, 4).map((item, index) => {
+                              let height;
+                              if (order.cart.length < 3) height = "h-20";
+                              if (order.cart.length === 3)
+                                height = "h-10 last:col-span-2";
+                              if (order.cart.length > 3) height = "h-10";
+                              return (
+                                <div
+                                  className={`w-full bg-yellow-300 ` + height}
+                                  key={index}
+                                >
+                                  <img
+                                    src={item.photo}
+                                    alt="s"
+                                    className="h-full w-full object-cover"
+                                  />
+                                </div>
+                              );
+                            })}
+                          </div>
+                        </div>
+                        <div className="px-3 flex flex-col justify-center">
+                          <p
+                            className={
+                              `text-sm flex items-center ` +
+                              statusColor(order.status)
+                            }
+                          >
+                            {order.status}
+                          </p>
+                          <p className="text-gray-900  dark:text-white font-bold text-sm line-clamp-2">
+                            {order.store.name} -{" "}
+                            {order.cart.map((item, index) => {
+                              return (
+                                <span key={index}>
+                                  {item.product}
+                                  {index < order.cart.length - 1 && ", "}
+                                </span>
+                              );
+                            })}
+                          </p>
                         </div>
                       </div>
-                      <div className="px-3 flex flex-col justify-center">
-                        <p
-                          className={
-                            `text-sm flex items-center ` +
-                            statusColor(order.status)
-                          }
-                        >
-                          {order.status}
-                        </p>
-                        <p className="text-gray-900  dark:text-white font-bold text-sm line-clamp-2">
-                          {order.store.name} -{" "}
-                          {order.cart.map((item, index) => {
-                            return (
-                              <span key={index}>
-                                {item.product}
-                                {index < order.cart.length - 1 && ", "}
-                              </span>
-                            );
-                          })}
-                        </p>
-                      </div>
-                    </div>
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      )}
-    </div>
-  );
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        )}
+      </div>
+    );
+  return <Order id={props.order} />;
 };
 
 Orders.propTypes = {};

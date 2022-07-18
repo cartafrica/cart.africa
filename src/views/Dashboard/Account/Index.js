@@ -56,7 +56,7 @@ const AccountIndex = (props) => {
       <div
         className={`flex flex-col ${
           !props.page ? "w-full flex" : "hidden"
-        } lg:flex lg:w-1/4`}
+        } lg:flex lg:w-1/3`}
       >
         <AccountMenu menu={profileMenu} />
         <h3 className="text-md font-bold ml-5 mt-5 mb-3 dark:text-white">Support</h3>
@@ -80,7 +80,7 @@ const AccountIndex = (props) => {
           Welcome to your account, please select an account menu.
         </div>
       ) : (
-        <div className="w-full">
+        <div className="w-full lg:w-2/3">
           {props.page === "privacy" && <PrivacyPolicy />}
           {props.page === "terms" && <Terms />}
           {props.page === "about" && <About />}

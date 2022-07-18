@@ -9,7 +9,7 @@ const PaymentList = (props) => {
       key={index}
     >
       <div className="flex-1">
-        <h4 className="text-gray-800">**** **** **** {method.last4}</h4>
+        <h4 className="text-gray-800 text-lg">**** **** **** {method.last4}</h4>
         <small className="text-xs text-gray-600">{method.expiry}</small>
       </div>
       <div>

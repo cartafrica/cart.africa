@@ -24,7 +24,7 @@ const Delivery = () => {
     <div className="">
       <AccountHeader name="Delivery Addresses" />
       <div className="flex flex-col items-center justify-center p-5">
-        <div className="w-full md:w-1/2 lg:w-1/3">
+  <div className="w-full lg:w-3/4 xl:w-1/2 m-auto">
           <DeliveryList data={addresses} />
           <Link to="/dashboard/account/add-delivery">
           <button

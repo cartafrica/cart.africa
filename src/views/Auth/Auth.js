@@ -9,6 +9,9 @@ import AuthForm from "components/LoginForm/AuthForm";
 const Auth = () => {
   let navigate = useNavigate();
   const [codeSent, setCodeSent] = useState(false);
+  const [challenge, setChallenge] = useState("");
+  const [code, setCode] = useState();
+  const [phone, setPhone] = useState("");
 
   const handleLogin = () => {
     navigate("/onboarding/profile");
@@ -39,10 +42,14 @@ const Auth = () => {
           </div>
         </div>
         <div className="bg-white flex flex-grow p-6 lg:p-24 justify-center items-start rounded-t-3xl lg:flex lg:ml-120 lg:rounded-none">
-          {!codeSent ? (
-            <LoginForm login={sendCode} />
+          {challenge === "" ? (
+            <LoginForm
+              setChallenge={setChallenge}
+              phone={phone}
+              setPhone={setPhone}
+            />
           ) : (
-            <AuthForm login={handleLogin} code={sendCode} />
+            <AuthForm setChallenge={setChallenge} challenge={challenge} />
           )}
         </div>
       </div>
