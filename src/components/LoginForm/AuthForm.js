@@ -5,7 +5,7 @@ import useToken from "services/useToken";
 import { useLocation, useNavigate } from "react-router-dom";
 import { completeLogin } from "services/network/lib/auth";
 import useAuth from "hooks/useAuth";
-import { apiPrivate } from "services/network/apiClient";
+import { api } from "services/network/apiClient";
 const AuthForm = (props) => {
   const { setAuth } = useAuth();
   const lineIndex = props.index;
@@ -43,7 +43,7 @@ const AuthForm = (props) => {
             setError("Error");
           } else {
             setAuth(response.data);
-            apiPrivate.get("account/me/info").then((response) => {
+            api.get("account/me/info").then((response) => {
               console.log(response.data);
             });
             // navigate(from, { replace: true });

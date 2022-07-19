@@ -2,13 +2,9 @@ import axios from "axios";
 const BASE_URL = `https://dev.cart.africa/api/v1/`;
 const api = axios.create({
   baseURL: BASE_URL,
-});
-
-export const apiPrivate = axios.create({
-  baseURL: BASE_URL,
-  headers: { "Content-Type": "application/json" },
   withCredentials: true,
 });
+
 api.interceptors.response.use(
   function (response) {
     return response;
