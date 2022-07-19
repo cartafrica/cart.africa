@@ -5,7 +5,7 @@ import useToken from "services/useToken";
 import { useLocation, useNavigate } from "react-router-dom";
 import { completeLogin } from "services/network/lib/auth";
 import useAuth from "hooks/useAuth";
-import { api } from "services/network/apiClient";
+import api from "services/network/apiClient";
 const AuthForm = (props) => {
   const { setAuth } = useAuth();
   const lineIndex = props.index;
