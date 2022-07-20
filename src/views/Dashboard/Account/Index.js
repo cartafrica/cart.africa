@@ -59,12 +59,12 @@ const AccountIndex = (props) => {
         } lg:flex lg:w-1/3`}
       >
         <AccountMenu menu={profileMenu} />
-        <h3 className="text-md font-bold ml-5 mt-5 mb-3 dark:text-white">Support</h3>
+        <h3 className="text-md font-bold ml-5 mt-5 mb-3 ">Support</h3>
         <AccountMenu menu={supportMenu} />
-        <h3 className="text-md font-bold ml-5 mt-5 mb-3 dark:text-white">Legal</h3>
+        <h3 className="text-md font-bold ml-5 mt-5 mb-3 ">Legal</h3>
         <AccountMenu menu={legalMenu} />
         <div className="p-4">
-          <button className="bg-century dark:bg-white w-full text-white dark:text-century py-3 rounded ">
+          <button className="bg-century w-full text-white py-3 rounded ">
             Logout
           </button>
         </div>

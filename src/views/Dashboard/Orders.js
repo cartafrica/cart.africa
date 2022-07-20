@@ -222,7 +222,7 @@ const Orders = (props) => {
           <div className="flex flex-col">
             You have not added a delivery address.
             <Link
-              to="/dashboard/account/add-delivery"
+              to="/onboarding/delivery"
               className="font-semibold"
             >
               Add Address
@@ -234,7 +234,7 @@ const Orders = (props) => {
           <div className="flex flex-col">
             You have not added a payment method.
             <Link
-              to="/dashboard/account/add-delivery"
+              to="/onboarding/payment"
               className="font-semibold"
             >
               Add Card
@@ -244,7 +244,7 @@ const Orders = (props) => {
         {orders.length < 1 ? (
           <div className="flex items-center justify-center flex-col h-full">
             <img src={empty} alt="No purchase yet" className="mb-4" />
-            <p className=" dark:text-white">
+            <p className=" ">
               <strong>Uh-oh!</strong> You have not made any purchase.
             </p>
           </div>
@@ -292,7 +292,7 @@ const Orders = (props) => {
                           >
                             {order.status}
                           </p>
-                          <p className="text-gray-900  dark:text-white font-bold text-sm line-clamp-2">
+                          <p className="text-gray-900   font-bold text-sm line-clamp-2">
                             {order.store.name} -{" "}
                             {order.cart.map((item, index) => {
                               return (

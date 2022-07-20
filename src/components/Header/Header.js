@@ -14,14 +14,14 @@ const Header = (props) => {
   return (
     <header className="py-5 px-5 flex items-center justify-between">
       <div>
-        <p className=" font-bold  dark:text-white">Hi, {profile.FirstName}!</p>
-        <p className="text-gray-500  dark:text-gray-300 text-sm">
+        <p className=" font-bold  ">Hi, {profile.FirstName}!</p>
+        <p className="text-gray-500 text-sm">
           {props.page === "orders" && "Orders"}
           {props.page === "account" && "Account"}
         </p>
       </div>
       <LogoutIcon
-        className="h-6 w-6  dark:text-white cursor-pointer"
+        className="h-6 w-6   cursor-pointer"
         onClick={logout}
       />
     </header>

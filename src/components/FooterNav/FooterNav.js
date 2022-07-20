@@ -10,7 +10,7 @@ const FooterNav = (props) => (
   <footer className="py-6 px-6 lg:px-96 flex items-center justify-center">
     <div className="flex-1 w-1/2 items-center justify-center flex">
       {props.page === "orders" ? (
-        <ShoppingBagIconSolid className="h-7 w-7 text-century dark:text-white" />
+        <ShoppingBagIconSolid className="h-7 w-7 text-century " />
       ) : (
         <Link to={"/dashboard/orders"}>
           <ShoppingBagIcon className="h-7 w-7 text-gray-500  dark:text-gray-300" />
@@ -20,7 +20,7 @@ const FooterNav = (props) => (
     <div className="flex-1 w-1/2 items-center justify-center flex">
       {props.page === "account" ? (
         <Link to={"/dashboard/account"}>
-          <UserIconSolid className="h-7 w-7 text-century dark:text-white" />
+          <UserIconSolid className="h-7 w-7 text-century " />
         </Link>
       ) : (
         <Link to={"/dashboard/account"}>
