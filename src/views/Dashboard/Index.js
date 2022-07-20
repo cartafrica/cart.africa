@@ -18,7 +18,9 @@ const Dashboard = () => {
     getProfile()
       .then((response) => {
         let user = response.data;
-        console.log("aas", user);
+        if (!user) {
+          navigate("/auth");
+        }
         if (user.Status === "onboarding") {
           navigate("/onboarding/profile");
         }

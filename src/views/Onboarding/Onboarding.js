@@ -124,7 +124,7 @@ const Onboarding = () => {
               We need these information now, so you don't have to enter them
               again.
             </p>
-            {page === "profile" && <ProfileForm />}
+            {page === "profile" && <ProfileForm next={true} />}
             {page === "delivery" && (
               <>
                 <AddDeliveryForm handle={handleDeliverySubmit} />

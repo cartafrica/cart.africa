@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import useAuth from "hooks/useAuth";
 import { getProfile, updateProfile } from "services/network/lib/profile";
-import { XCircleIcon } from "@heroicons/react/outline";
+import { CheckIcon, XCircleIcon } from "@heroicons/react/outline";
 import { useNavigate } from "react-router-dom";
 
-const ProfileForm = () => {
+const ProfileForm = (props) => {
   const [loading, setLoading] = useState(true);
   const { setProfile } = useAuth();
   const [state, setState] = useState({
@@ -13,6 +13,7 @@ const ProfileForm = () => {
     email: "",
   });
   const [submitError, setSubmitError] = useState("");
+  const [submitSuccess, setSubmitSuccess] = useState(false);
   const [errors, setErrors] = useState({});
   let navigate = useNavigate();
 
@@ -100,7 +101,8 @@ const ProfileForm = () => {
           console.log(response);
           localStorage.setItem("user", JSON.stringify(response.data));
           setProfile(response.data);
-          navigate("/onboarding/delivery");
+          props.next && navigate("/onboarding/delivery");
+          setSubmitSuccess(true);
           setLoading(false);
         })
         .catch((err) => {
@@ -142,6 +144,12 @@ const ProfileForm = () => {
         <div className="bg-red-500 text-white rounded-lg p-3 flex space-x-2 shadow-md my-4">
           <XCircleIcon className="h-6" />
           <div className="flex flex-col">{submitError}</div>
+        </div>
+      )}
+      {submitSuccess && (
+        <div className="bg-green-500 text-white rounded-lg p-3 flex space-x-2 shadow-md my-4">
+          <CheckIcon className="h-6" />
+          <div className="flex flex-col">Profile has been saved!</div>
         </div>
       )}
       <div className="mb-3">
