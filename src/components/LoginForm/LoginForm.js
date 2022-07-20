@@ -1,19 +1,15 @@
 import React, { useRef, useState } from "react";
-import PropTypes from "prop-types";
 import countries from "assets/countries.json";
-import {
-  CheckIcon,
-  ChevronDownIcon,
-  XCircleIcon,
-} from "@heroicons/react/outline";
+import { CheckIcon, ChevronDownIcon } from "@heroicons/react/outline";
 import "./LoginForm.css";
 import { login } from "services/network/lib/auth";
+import useAuth from "hooks/useAuth";
 
 const LoginForm = (props) => {
+  const { setError } = useAuth();
   const [countrySelect, setCountrySelect] = useState(false);
   const [selected, setSelected] = useState(countries[0]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
   const inputRef = useRef(null);
 
   const toggleCountrySelect = () => {
@@ -53,12 +49,7 @@ const LoginForm = (props) => {
   return (
     <div className="w-full lg:w-96">
       <h1 className="text-3xl text-center">Get Started</h1>
-      {error && (
-        <div className="bg-red-500 text-white rounded-lg p-3 flex space-x-2 shadow-md my-4">
-          <XCircleIcon className="h-6" />
-          <div className="flex flex-col">Oops! {error}</div>
-        </div>
-      )}
+
       <form className="mt-4" onSubmit={handleLogin}>
         <div className="mb-4">
           <label id="listbox-label" className="block text-sm text-gray-700">

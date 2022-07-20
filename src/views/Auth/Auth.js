@@ -1,24 +1,20 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
+import React, { useState, useEffect, useRef } from "react";
 import "./Auth.css";
 import onboard1 from "assets/onboard-1.png";
-import { useNavigate } from "react-router-dom";
 import LoginForm from "components/LoginForm/LoginForm";
 import AuthForm from "components/LoginForm/AuthForm";
+import useAuth from "hooks/useAuth";
+import { XCircleIcon } from "@heroicons/react/outline";
 
 const Auth = () => {
-  let navigate = useNavigate();
-  const [codeSent, setCodeSent] = useState(false);
+  const { error } = useAuth();
   const [challenge, setChallenge] = useState("");
-  const [code, setCode] = useState();
   const [phone, setPhone] = useState("");
+  const errorRef = useRef(null);
 
-  const handleLogin = () => {
-    navigate("/onboarding/profile");
-  };
-  const sendCode = () => {
-    setCodeSent(!codeSent);
-  };
+  useEffect(() => {
+    errorRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [error]);
   return (
     <div className="Auth">
       <div className="bg-century flex flex-col h-screen">
@@ -41,7 +37,7 @@ const Auth = () => {
             <img src={onboard1} alt="onboarding 1" className="w-full" />
           </div>
         </div>
-        <div className="bg-white flex flex-grow p-6 lg:p-24 justify-center items-start rounded-t-3xl lg:flex lg:ml-120 lg:rounded-none">
+        <div className="bg-white flex-grow p-6 lg:p-24 justify-center items-start rounded-t-3xl lg:flex lg:ml-120 lg:rounded-none">
           {challenge === "" ? (
             <LoginForm
               setChallenge={setChallenge}
@@ -50,6 +46,15 @@ const Auth = () => {
             />
           ) : (
             <AuthForm setChallenge={setChallenge} challenge={challenge} />
+          )}
+          {error && (
+            <div
+              ref={errorRef}
+              className="bg-red-500 text-white rounded-lg p-3 flex space-x-2 shadow-md my-4"
+            >
+              <XCircleIcon className="h-6" />
+              <div className="flex flex-col">{error}</div>
+            </div>
           )}
         </div>
       </div>

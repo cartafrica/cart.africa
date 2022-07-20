@@ -1,13 +1,15 @@
 import React from "react";
-import PropTypes from "prop-types";
 import "./Onboarding.css";
 import ProfileForm from "components/ProfileForm/ProfileForm";
 import AddDeliveryForm from "components/AddDeliveryForm/AddDeliveryForm";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import onboard1 from "assets/onboard-1.png";
+import { LogoutIcon } from "@heroicons/react/outline";
+import useAuth from "hooks/useAuth";
 
 const Onboarding = () => {
   const { page } = useParams();
+  const { setAuth, setProfile, setError } = useAuth();
   let navigate = useNavigate();
 
   const handleProfileSubmit = () => {
@@ -17,6 +19,12 @@ const Onboarding = () => {
     navigate("/cart");
   };
 
+  const logout = () => {
+    localStorage.clear();
+    setAuth(false);
+    setError("You've been logged out!");
+    setProfile({});
+  };
   return (
     <div className="Onboarding">
       <div className="bg-century flex flex-col h-screen">
@@ -62,11 +70,21 @@ const Onboarding = () => {
                       }}
                     >
                       <div className="w-full bg-gray-200 rounded items-center align-middle align-center flex-1">
-                        <div className={`${page === 'profile' ? 'w-1/2' : 'w-full'} border border-century`}></div>
+                        <div
+                          className={`${
+                            page === "profile" ? "w-1/2" : "w-full"
+                          } border border-century`}
+                        ></div>
                       </div>
                     </div>
 
-                    <div className={`w-10 h-10 mx-auto ${page === 'delivery' ? 'bg-century text-white' : 'bg-white text-gray-600 border-2 border-gray-200'} rounded-full text-lg flex items-center`}>
+                    <div
+                      className={`w-10 h-10 mx-auto ${
+                        page === "delivery"
+                          ? "bg-century text-white"
+                          : "bg-white text-gray-600 border-2 border-gray-200"
+                      } rounded-full text-lg flex items-center`}
+                    >
                       <span className="text-center w-full">2</span>
                     </div>
                   </div>
@@ -83,12 +101,18 @@ const Onboarding = () => {
                       }}
                     >
                       <div className="w-full bg-gray-200 rounded items-center align-middle align-center flex-1">
-                        <div className={`${page === 'delivery' ? 'w-1/2' : 'w-0'}  border-century border`}></div>
+                        <div
+                          className={`${
+                            page === "delivery" ? "w-1/2" : "w-0"
+                          }  border-century border`}
+                        ></div>
                       </div>
                     </div>
 
                     <div className="w-10 h-10 mx-auto bg-white border-2 border-gray-200 rounded-full text-lg text-white flex items-center">
-                      <span className="text-center text-gray-600 w-full">3</span>
+                      <span className="text-center text-gray-600 w-full">
+                        3
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -108,6 +132,12 @@ const Onboarding = () => {
               <AddDeliveryForm handle={handleDeliverySubmit} />
             )}
             {page === "payment" && <ProfileForm />}
+            <div
+              className="flex justify-center cursor-pointer mt-2"
+              onClick={logout}
+            >
+              <LogoutIcon className="h-6 mr-1" /> Logout
+            </div>
           </div>
         </div>
       </div>

@@ -1,17 +1,12 @@
 import React, { useState, createRef, useEffect } from "react";
 import "./LoginForm.css";
-import { XCircleIcon } from "@heroicons/react/outline";
-import useToken from "services/useToken";
 import { useLocation, useNavigate } from "react-router-dom";
 import { completeLogin } from "services/network/lib/auth";
 import useAuth from "hooks/useAuth";
-import api from "services/network/apiClient";
 const AuthForm = (props) => {
-  const { setAuth } = useAuth();
-  const lineIndex = props.index;
+  const { setAuth, setError } = useAuth();
   const numerOfInputs = props?.numerOfInputs || 6;
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
 
   const [inputRefsArray] = useState(() =>
     Array.from({ length: numerOfInputs }, () => createRef())
@@ -26,7 +21,7 @@ const AuthForm = (props) => {
   const from = location.state?.from?.pathname || "/dashboard/orders";
 
   const handleCompleteLogin = (e) => {
-    e.preventDefault();
+    e?.preventDefault();
     console.log(letters);
     if (letters.length < 6) {
       setError("Error with code.");
@@ -41,15 +36,12 @@ const AuthForm = (props) => {
         .then((response) => {
           if (!response.data.token) {
             setError("Error");
+            setLoading(false);
           } else {
             setAuth(response.data);
-            api.get("account/me/info").then((response) => {
-              console.log(response.data);
-            });
-            // navigate(from, { replace: true });
+            localStorage.setItem("isLoggedIn", true);
+            navigate(from, { replace: true });
           }
-          console.log(response.data.token);
-          setLoading(false);
         })
         .catch((error) => {
           console.error("error ", error);
@@ -62,7 +54,10 @@ const AuthForm = (props) => {
     setCurrentIndex((prevIndex) => {
       const nextIndex = prevIndex < numerOfInputs - 1 ? prevIndex + 1 : 0;
       const nextInput = inputRefsArray?.[nextIndex]?.current;
-      if (prevIndex === numerOfInputs - 1) return;
+      if (prevIndex === numerOfInputs - 1) {
+        handleCompleteLogin();
+        return;
+      }
       nextInput.focus();
       nextInput.select();
       return nextIndex;
@@ -85,12 +80,7 @@ const AuthForm = (props) => {
       <p className="text-gray-500 text-sm text-center mt-2">
         We've sent a One Time Password to your phone, type it here.
       </p>
-      {error && (
-        <div className="bg-red-500 text-white rounded-lg p-3 flex space-x-2 shadow-md my-4">
-          <XCircleIcon className="h-6" />
-          <div className="flex flex-col">Oops! {error}</div>
-        </div>
-      )}
+
       <form className="mt-4" onSubmit={handleCompleteLogin}>
         <div className="flex space-x-2 h-12 mb-4">
           {inputRefsArray.map((ref, index) => {
