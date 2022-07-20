@@ -12,9 +12,6 @@ const Onboarding = () => {
   const { setAuth, setProfile, setError } = useAuth();
   let navigate = useNavigate();
 
-  const handleProfileSubmit = () => {
-    navigate("/onboarding/delivery");
-  };
   const handleDeliverySubmit = () => {
     navigate("/cart");
   };
@@ -127,11 +124,33 @@ const Onboarding = () => {
               We need these information now, so you don't have to enter them
               again.
             </p>
-            {page === "profile" && <ProfileForm handle={handleProfileSubmit} />}
+            {page === "profile" && <ProfileForm />}
             {page === "delivery" && (
-              <AddDeliveryForm handle={handleDeliverySubmit} />
+              <>
+                <AddDeliveryForm handle={handleDeliverySubmit} />
+                <div
+                  className="flex justify-center cursor-pointer my-5"
+                  onClick={() => {
+                    navigate("/onboarding/payment");
+                  }}
+                >
+                  Skip
+                </div>
+              </>
             )}
-            {page === "payment" && <ProfileForm />}
+            {page === "payment" && (
+              <>
+                <ProfileForm />
+                <div
+                  className="flex justify-center cursor-pointer my-5"
+                  onClick={() => {
+                    navigate("/dashboard/orders");
+                  }}
+                >
+                  Skip
+                </div>
+              </>
+            )}
             <div
               className="flex justify-center cursor-pointer mt-2"
               onClick={logout}

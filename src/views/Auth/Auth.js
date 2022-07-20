@@ -38,24 +38,26 @@ const Auth = () => {
           </div>
         </div>
         <div className="bg-white flex-grow p-6 lg:p-24 justify-center items-start rounded-t-3xl lg:flex lg:ml-120 lg:rounded-none">
-          {challenge === "" ? (
-            <LoginForm
-              setChallenge={setChallenge}
-              phone={phone}
-              setPhone={setPhone}
-            />
-          ) : (
-            <AuthForm setChallenge={setChallenge} challenge={challenge} />
-          )}
-          {error && (
-            <div
-              ref={errorRef}
-              className="bg-red-500 text-white rounded-lg p-3 flex space-x-2 shadow-md my-4"
-            >
-              <XCircleIcon className="h-6" />
-              <div className="flex flex-col">{error}</div>
-            </div>
-          )}
+          <div className="flex flex-col mx-auto">
+            {challenge === "" ? (
+              <LoginForm
+                setChallenge={setChallenge}
+                phone={phone}
+                setPhone={setPhone}
+              />
+            ) : (
+              <AuthForm setChallenge={setChallenge} challenge={challenge} />
+            )}
+            {error && (
+              <div
+                ref={errorRef}
+                className="bg-red-500 text-white rounded-lg p-3 flex space-x-2 shadow-md my-4"
+              >
+                <XCircleIcon className="h-6" />
+                <div className="flex flex-col">{error}</div>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>

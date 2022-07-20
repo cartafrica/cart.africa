@@ -4,7 +4,7 @@ import { getProfile, updateProfile } from "services/network/lib/profile";
 import { XCircleIcon } from "@heroicons/react/outline";
 import { useNavigate } from "react-router-dom";
 
-const ProfileForm = (props) => {
+const ProfileForm = () => {
   const [loading, setLoading] = useState(true);
   const { setProfile } = useAuth();
   const [state, setState] = useState({
