@@ -59,7 +59,7 @@ const LoginForm = (props) => {
             <button
               type="button"
               onClick={toggleCountrySelect}
-              className="relative bg-white border-b border-gray-200 focus:ring-0 pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-0 focus:ring-century focus:border-century sm:text-sm"
+              className="relative bg-white border-b border-gray-200 focus:ring-0 pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-0 focus:ring-black focus:border-black sm:text-sm"
               aria-haspopup="listbox"
               aria-expanded="true"
               aria-labelledby="listbox-label"
@@ -87,7 +87,7 @@ const LoginForm = (props) => {
               ref={inputRef}
               value={props.phone}
               autoFocus
-              className="focus:ring-century focus:border-century sm:text-sm border-b border-gray-200 focus:ring-0 flex-1 border-r-0 border-t-0"
+              className="focus:ring-black focus:border-black sm:text-sm border-b border-gray-200 focus:ring-0 flex-1 border-r-0 border-t-0"
               placeholder=""
             />
 
@@ -129,7 +129,7 @@ const LoginForm = (props) => {
         </div>
 
         <button
-          className="bg-century w-full text-white mb-3 py-3 px-4 rounded focus:outline-none focus:shadow-outline"
+          className="bg-black w-full text-white mb-3 py-3 px-4 rounded focus:outline-none focus:shadow-outline"
           type="submit"
           disabled={loading}
         >

@@ -55,7 +55,7 @@ const AuthForm = (props) => {
       const nextIndex = prevIndex < numerOfInputs - 1 ? prevIndex + 1 : 0;
       const nextInput = inputRefsArray?.[nextIndex]?.current;
       if (prevIndex === numerOfInputs - 1) {
-        handleCompleteLogin();
+        // handleCompleteLogin();
         return;
       }
       nextInput.focus();
@@ -113,14 +113,13 @@ const AuthForm = (props) => {
                   e.target.select();
                 }}
                 value={letters[index]}
-                max={"1"}
               />
             );
           })}
         </div>
 
         <button
-          className="bg-century w-full text-white mb-3 py-3 px-4 rounded focus:outline-none focus:shadow-outline"
+          className="bg-black w-full text-white mb-3 py-3 px-4 rounded focus:outline-none focus:shadow-outline"
           type="submit"
           disabled={loading}
         >

@@ -11,11 +11,11 @@ function App() {
   return (
     <Routes>
       <Route path="/auth" element={<Auth />} />
+      <Route path="/cart/:id" element={<Cart />} />
 
       <Route element={<PersistLogin />}>
         <Route element={<RequireAuth />}>
           <Route path="/onboarding/:page" element={<Onboarding />} />
-          <Route path="/cart" element={<Cart />} />
           <Route path="/dashboard/:page" element={<Dashboard />} />
           <Route path="/dashboard/:page/:subpage" element={<Dashboard />} />
           <Route

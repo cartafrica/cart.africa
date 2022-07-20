@@ -63,7 +63,7 @@ const Order = (props) => {
         </p>
       </header>
       <div className="w-full lg:w-96 mx-auto mt-2">
-        <ul className="divide-y divide-slate-300">
+        <ul className="divide-y divide-gray-300">
           <li className="flex items-center space-x-4 p-4">
             <div className="shrink-0">
               <img
@@ -95,11 +95,11 @@ const Order = (props) => {
         </ul>
         <div className="p-6">
           <ul className="space-y-4">
-            <li className="flex border-t pt-2 border-slate-200">
+            <li className="flex border-t pt-2 border-gray-200">
               <p className="text-sm text-gray-600 flex-1">Subtotal</p>
               <p className="text-sm text-gray-600">N3,030,000</p>
             </li>
-            <li className="flex border-b pb-2 border-slate-200">
+            <li className="flex border-b pb-2 border-gray-200">
               <p className="text-sm text-gray-600 flex-1">Shipping Fee</p>
               <p className="text-sm text-gray-600">N1,000</p>
             </li>
@@ -125,15 +125,15 @@ const Order = (props) => {
 
           <Link to="/dashboard/orders">
             <button
-              className="bg-century w-full text-white my-3 py-3 px-4 rounded focus:outline-none focus:shadow-outline"
+              className="bg-black w-full text-white my-3 py-3 px-4 rounded focus:outline-none focus:shadow-outline"
               type="submit"
             >
               Raise Dispute
             </button>
           </Link>
           <p className="font-semibold text-sm text-center">
-            <span className="text-century ">View Return Policy</span> | {" "}
-            <span className="text-century ">Contact Sneaklin</span>
+            <span className="text-black ">View Return Policy</span> | {" "}
+            <span className="text-black ">Contact Sneaklin</span>
           </p>
         </div>
       </div>

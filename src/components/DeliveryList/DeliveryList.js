@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const DeliveryList = (props) => {
   const addressItems = props.data.map((address, index) => (
     <li
-      className="flex items-center space-x-4 py-4 border-b border-slate-300 first:pt-0"
+      className="flex items-center space-x-4 py-4 border-b border-gray-300 first:pt-0"
       key={index}
     >
       <div className="flex-1">

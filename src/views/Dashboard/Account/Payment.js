@@ -29,7 +29,7 @@ const Payment = () => {
       <div className="flex flex-col items-center justify-center p-5">
         <div className="w-full lg:w-3/4 xl:w-1/2 m-auto">
           <PaymentList data={methods} />
-            <button className="bg-century w-full text-white my-3 py-3 rounded focus:outline-none focus:shadow-outline">
+            <button className="bg-black w-full text-white my-3 py-3 rounded focus:outline-none focus:shadow-outline">
               Add Payment Method
             </button>
         </div>

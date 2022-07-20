@@ -34,7 +34,7 @@ const Dashboard = () => {
   return isLoading ? (
     <div className="h-screen flex items-center mx-auto">
       <svg
-        className="animate-spin mx-auto h-10 text-century"
+        className="animate-spin mx-auto h-10 text-black"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"

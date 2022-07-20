@@ -5,6 +5,7 @@ import LoginForm from "components/LoginForm/LoginForm";
 import AuthForm from "components/LoginForm/AuthForm";
 import useAuth from "hooks/useAuth";
 import { XCircleIcon } from "@heroicons/react/outline";
+import logoW from "assets/logo-w.svg";
 
 const Auth = () => {
   const { error } = useAuth();
@@ -17,15 +18,15 @@ const Auth = () => {
   }, [error]);
   return (
     <div className="Auth">
-      <div className="bg-century flex flex-col h-screen">
+      <div className="bg-black flex flex-col h-screen">
         <div
-          className={`bg-century flex flex-col p-10 lg:p-24 justify-center items-center lg:fixed lg:inset-y-0 lg:left-0 lg:flex lg:w-120 lg:overflow-y-auto`}
+          className={`bg-black flex flex-col p-10 lg:p-24 justify-center items-center lg:fixed lg:inset-y-0 lg:left-0 lg:flex lg:w-120 lg:overflow-y-auto`}
         >
-          <h1
-            className={`text-3xl font-bold text-center text-white mb-3 italic`}
-          >
-            Cart.africa
-          </h1>
+          <img
+            className={`text-3xl font-bold text-center text-white mb-3 italic h-8 lg:mb-10`}
+            src={logoW}
+            alt="cart.africa"
+          />
           <div className="">
             <h1 className="text-2xl font-bold text-center text-white">
               Track your mood and reflect on your day

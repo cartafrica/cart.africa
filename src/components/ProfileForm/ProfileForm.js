@@ -115,7 +115,7 @@ const ProfileForm = (props) => {
   return loading ? (
     <div className="flex items-center">
       <svg
-        className="animate-spin mx-auto h-10 text-century"
+        className="animate-spin mx-auto h-10 text-black"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
@@ -155,7 +155,7 @@ const ProfileForm = (props) => {
       <div className="mb-3">
         <label className="block text-gray-700 text-sm mb-2">First Name</label>
         <input
-          className="appearance-none border-0 border-b border-gray-200 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:ring-century focus:border-century"
+          className="appearance-none border-0 border-b border-gray-200 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:ring-black focus:border-black"
           name="firstName"
           type="text"
           value={state.firstName}
@@ -169,7 +169,7 @@ const ProfileForm = (props) => {
       <div className="mb-3">
         <label className="block text-gray-700 text-sm mb-2">Last Name</label>
         <input
-          className="appearance-none border-0 border-b border-gray-200 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:ring-century focus:border-century"
+          className="appearance-none border-0 border-b border-gray-200 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:ring-black focus:border-black"
           name="lastName"
           type="text"
           value={state.lastName}
@@ -184,7 +184,7 @@ const ProfileForm = (props) => {
           Email Address
         </label>
         <input
-          className="appearance-none border-0 border-b border-gray-200 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:ring-century focus:border-century"
+          className="appearance-none border-0 border-b border-gray-200 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:ring-black focus:border-black"
           name="email"
           type="text"
           value={state.email}
@@ -195,7 +195,7 @@ const ProfileForm = (props) => {
         </span>
       </div>
       <button
-        className="bg-century w-full text-white mb-3 py-3 px-4 rounded focus:outline-none focus:shadow-outline"
+        className="bg-black w-full text-white mb-3 py-3 px-4 rounded focus:outline-none focus:shadow-outline"
         type="submit"
         disabled={loading || !state}
       >

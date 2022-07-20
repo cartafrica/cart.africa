@@ -11,8 +11,10 @@ import ManageProfile from "./ManageProfile";
 import Delivery from "./Delivery";
 import AddDelivery from "./AddDelivery";
 import Payment from "./Payment";
+import useAuth from "hooks/useAuth";
 
 const AccountIndex = (props) => {
+  const { profile, setAuth, setProfile, setError } = useAuth();
   const profileMenu = [
     {
       to: "/dashboard/account/profile",
@@ -51,6 +53,13 @@ const AccountIndex = (props) => {
       name: "Terms and Conditions",
     },
   ];
+
+  const logout = () => {
+    localStorage.clear();
+    setAuth(false);
+    setError("You've been logged out!");
+    setProfile({});
+  };
   return (
     <div className="flex">
       <div
@@ -64,7 +73,10 @@ const AccountIndex = (props) => {
         <h3 className="text-md font-bold ml-5 mt-5 mb-3 ">Legal</h3>
         <AccountMenu menu={legalMenu} />
         <div className="p-4">
-          <button className="bg-century w-full text-white py-3 rounded ">
+          <button
+            className="bg-black w-full text-white py-3 rounded"
+            onClick={logout}
+          >
             Logout
           </button>
         </div>

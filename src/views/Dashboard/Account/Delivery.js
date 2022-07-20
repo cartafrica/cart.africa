@@ -28,7 +28,7 @@ const Delivery = () => {
           <DeliveryList data={addresses} />
           <Link to="/dashboard/account/add-delivery">
           <button
-            className="bg-century w-full text-white my-3 py-3 rounded focus:outline-none focus:shadow-outline"
+            className="bg-black w-full text-white my-3 py-3 rounded focus:outline-none focus:shadow-outline"
           >
             Add Address
           </button>

@@ -24,9 +24,9 @@ const Onboarding = () => {
   };
   return (
     <div className="Onboarding">
-      <div className="bg-century flex flex-col h-screen">
+      <div className="bg-black flex flex-col h-screen">
         <div
-          className={`bg-century flex flex-col p-4 lg:p-24 justify-center items-center lg:fixed lg:inset-y-0 lg:left-0 lg:flex lg:w-120 lg:overflow-y-auto`}
+          className={`bg-black flex flex-col p-4 lg:p-24 justify-center items-center lg:fixed lg:inset-y-0 lg:left-0 lg:flex lg:w-120 lg:overflow-y-auto`}
         >
           <h1
             className={`text-3xl font-bold text-center text-white lg:mb-3 italic`}
@@ -50,7 +50,7 @@ const Onboarding = () => {
               <div className="flex">
                 <div className="w-1/3">
                   <div className="relative mb-2">
-                    <div className="w-10 h-10 mx-auto bg-century rounded-full text-lg text-white flex items-center">
+                    <div className="w-10 h-10 mx-auto bg-black rounded-full text-lg text-white flex items-center">
                       <span className="text-center text-white w-full">1</span>
                     </div>
                   </div>
@@ -70,7 +70,7 @@ const Onboarding = () => {
                         <div
                           className={`${
                             page === "profile" ? "w-1/2" : "w-full"
-                          } border border-century`}
+                          } border border-black`}
                         ></div>
                       </div>
                     </div>
@@ -78,7 +78,7 @@ const Onboarding = () => {
                     <div
                       className={`w-10 h-10 mx-auto ${
                         page === "delivery"
-                          ? "bg-century text-white"
+                          ? "bg-black text-white"
                           : "bg-white text-gray-600 border-2 border-gray-200"
                       } rounded-full text-lg flex items-center`}
                     >
@@ -101,7 +101,7 @@ const Onboarding = () => {
                         <div
                           className={`${
                             page === "delivery" ? "w-1/2" : "w-0"
-                          }  border-century border`}
+                          }  border-black border`}
                         ></div>
                       </div>
                     </div>

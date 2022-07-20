@@ -13,7 +13,7 @@ const Onboarding = (props) => {
         <div class="flex">
           <div class="w-1/3">
             <div class="relative mb-2">
-              <div class="w-10 h-10 mx-auto bg-century rounded-full text-lg text-white flex items-center">
+              <div class="w-10 h-10 mx-auto bg-black rounded-full text-lg text-white flex items-center">
                 <span class="text-center text-white w-full">1</span>
               </div>
             </div>
@@ -72,7 +72,7 @@ const Onboarding = (props) => {
             First Name
           </label>
           <input
-            className="appearance-none border-0 border-b border-gray-200 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:ring-century focus:border-century"
+            className="appearance-none border-0 border-b border-gray-200 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:ring-black focus:border-black"
             id="first"
             type="text"
           />
@@ -82,7 +82,7 @@ const Onboarding = (props) => {
             Last Name
           </label>
           <input
-            className="appearance-none border-0 border-b border-gray-200 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:ring-century focus:border-century"
+            className="appearance-none border-0 border-b border-gray-200 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:ring-black focus:border-black"
             id="last"
             type="text"
           />
@@ -92,19 +92,19 @@ const Onboarding = (props) => {
             Email Address
           </label>
           <input
-            className="appearance-none border-0 border-b border-gray-200 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:ring-century focus:border-century"
+            className="appearance-none border-0 border-b border-gray-200 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:ring-black focus:border-black"
             id="email"
             type="email"
           />
         </div>
         <button
-          className="bg-century w-full text-white my-3 py-3 px-4 rounded focus:outline-none focus:ring-0 focus:ring-century"
+          className="bg-black w-full text-white my-3 py-3 px-4 rounded focus:outline-none focus:ring-0 focus:ring-black"
           type="submit"
         >
           Continue
         </button>
         <button
-          className="bg-transparent w-full text-century my-1 py-3 px-4 focus:outline-none focus:ring-0 focus:ring-century"
+          className="bg-transparent w-full text-black my-1 py-3 px-4 focus:outline-none focus:ring-0 focus:ring-black"
           type="button"
           onClick={props.login}
         >

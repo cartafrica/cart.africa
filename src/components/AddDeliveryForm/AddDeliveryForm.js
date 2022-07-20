@@ -8,7 +8,7 @@ const AddDeliveryForm = (props) => (
         Fullname
       </label>
       <input
-        className="appearance-none border-0 border-b border-gray-200 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:ring-century focus:border-century"
+        className="appearance-none border-0 border-b border-gray-200 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:ring-black focus:border-black"
         id="name"
         type="text"
       />
@@ -18,7 +18,7 @@ const AddDeliveryForm = (props) => (
         Phone Number
       </label>
       <input
-        className="appearance-none border-0 border-b border-gray-200 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:ring-century focus:border-century"
+        className="appearance-none border-0 border-b border-gray-200 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:ring-black focus:border-black"
         id="phone"
         type="text"
       />
@@ -28,7 +28,7 @@ const AddDeliveryForm = (props) => (
         Address
       </label>
       <input
-        className="appearance-none border-0 border-b border-gray-200 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:ring-century focus:border-century"
+        className="appearance-none border-0 border-b border-gray-200 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:ring-black focus:border-black"
         id="address"
         type="text"
       />
@@ -38,7 +38,7 @@ const AddDeliveryForm = (props) => (
         City
       </label>
       <input
-        className="appearance-none border-0 border-b border-gray-200 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:ring-century focus:border-century"
+        className="appearance-none border-0 border-b border-gray-200 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:ring-black focus:border-black"
         id="city"
         type="text"
       />
@@ -48,13 +48,13 @@ const AddDeliveryForm = (props) => (
         State
       </label>
       <input
-        className="appearance-none border-0 border-b border-gray-200 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:ring-century focus:border-century"
+        className="appearance-none border-0 border-b border-gray-200 w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-0 focus:ring-black focus:border-black"
         id="state"
         type="text"
       />
     </div>
     <button
-      className="bg-century w-full text-white mb-3 py-3 px-4 rounded focus:outline-none focus:shadow-outline"
+      className="bg-black w-full text-white mb-3 py-3 px-4 rounded focus:outline-none focus:shadow-outline"
       type="button"
       onClick={props.handle}
     >

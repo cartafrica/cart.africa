@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const PaymentList = (props) => {
   const methodItems = props.data.map((method, index) => (
     <li
-      className="flex items-center space-x-4 py-4 border-b border-slate-300 first:pt-0"
+      className="flex items-center space-x-4 py-4 border-b border-gray-300 first:pt-0"
       key={index}
     >
       <div className="flex-1">
