@@ -3,9 +3,9 @@ import "./Onboarding.css";
 import ProfileForm from "components/ProfileForm/ProfileForm";
 import AddDeliveryForm from "components/AddDeliveryForm/AddDeliveryForm";
 import { useNavigate, useParams } from "react-router-dom";
-import onboard1 from "assets/onboard-1.png";
 import { LogoutIcon } from "@heroicons/react/outline";
 import useAuth from "hooks/useAuth";
+import logoW from "assets/logo-w.svg";
 
 const Onboarding = () => {
   const { page } = useParams();
@@ -28,20 +28,19 @@ const Onboarding = () => {
         <div
           className={`bg-black flex flex-col p-4 lg:p-24 justify-center items-center lg:fixed lg:inset-y-0 lg:left-0 lg:flex lg:w-120 lg:overflow-y-auto`}
         >
-          <h1
-            className={`text-3xl font-bold text-center text-white lg:mb-3 italic`}
-          >
-            Cart.africa
-          </h1>
+          <img
+            className={`text-3xl font-bold text-center text-white italic h-8 lg:mb-10`}
+            src={logoW}
+            alt="cart.africa"
+          />
           <div className="hidden lg:block">
-            <h1 className="text-2xl font-bold text-center text-white">
+            <h1 className="text-2xl font-bold text-center text-white mb-2">
               Track your mood and reflect on your day
             </h1>
             <p className="text-white text-center">
               Impeet viverra vivamus porttior ules ac vulte lectus velit sen
               lectus ue
             </p>
-            <img src={onboard1} alt="onboarding 1" className="w-full" />
           </div>
         </div>
         <div className="bg-white flex flex-grow p-6 lg:p-24 justify-center items-start rounded-t-3xl lg:flex lg:ml-120 lg:rounded-none">

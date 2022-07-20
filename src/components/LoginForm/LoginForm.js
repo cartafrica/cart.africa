@@ -158,10 +158,12 @@ const LoginForm = (props) => {
             "Sign In"
           )}
         </button>
-        <small className="text-gray-500">
-          We'll send a One Time Password to your phone and that's how we confirm
-          it's really you.
-        </small>
+        <div className="text-center">
+          <small className="text-gray-500">
+            We'll send a One Time Password to your phone and that's how we
+            confirm it's really you.
+          </small>
+        </div>
       </form>
     </div>
   );
