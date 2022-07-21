@@ -1,18 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { LogoutIcon } from "@heroicons/react/outline";
 import useAuth from "hooks/useAuth";
 import icon from "assets/icon.svg";
 import logo from "assets/logo.svg";
+import { useLocation } from "react-router-dom";
 
-const Header = (props) => {
+const Header = () => {
   const { profile, setAuth, setProfile, setError } = useAuth();
 
+  const [pathName, setPathName] = useState("");
+  const location = useLocation();
   const logout = () => {
     localStorage.clear();
     setAuth(false);
     setError("You've been logged out!");
     setProfile({});
   };
+  useEffect(() => {
+    setPathName(location.pathname);
+  }, [location]);
   return (
     <header className="py-5 px-5 flex items-center justify-between">
       <div className="flex items-center space-x-2 divide-x divide-gray-300">
@@ -23,8 +29,8 @@ const Header = (props) => {
         <div className="pl-2">
           <p className=" font-bold  ">Hi, {profile.FirstName}!</p>
           <p className="text-gray-500 text-sm">
-            {props.page === "orders" && "Orders"}
-            {props.page === "account" && "Account"}
+            {pathName.includes("orders") && "Orders"}
+            {pathName.includes("account") && "Account"}
           </p>
         </div>
       </div>
