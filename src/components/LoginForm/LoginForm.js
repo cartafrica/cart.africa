@@ -8,6 +8,7 @@ import useAuth from "hooks/useAuth";
 const LoginForm = (props) => {
   const { setError } = useAuth();
   const [countrySelect, setCountrySelect] = useState(false);
+  const [phone, setPhone] = useState("");
   const [selected, setSelected] = useState(countries[0]);
   const [loading, setLoading] = useState(false);
   const inputRef = useRef(null);
@@ -22,15 +23,15 @@ const LoginForm = (props) => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log(selected.dial_code + props.phone);
-    if (props.phone === "") {
+    console.log(selected.dial_code + phone);
+    if (phone === "") {
       setError("Phone number is required.");
       inputRef.current.focus();
     } else {
       setLoading(true);
       setError(false);
       login({
-        phone: selected.dial_code + props.phone,
+        phone: selected.dial_code + phone,
         countryCode: selected.code,
       })
         .then((response) => {
@@ -47,8 +48,8 @@ const LoginForm = (props) => {
   };
 
   return (
-    <div className="w-full lg:w-96">
-      <h1 className="text-3xl text-center">Get Started</h1>
+    <div className={`w-full ${props.page === "auth" && "lg:w-96"}`}>
+      <h1 className="text-2xl text-center">Welcome Back</h1>
 
       <form className="mt-4" onSubmit={handleLogin}>
         <div className="mb-4">
@@ -83,9 +84,9 @@ const LoginForm = (props) => {
             <input
               type="number"
               name="phone"
-              onChange={(e) => props.setPhone(e.target.value)}
+              onChange={(e) => setPhone(e.target.value)}
               ref={inputRef}
-              value={props.phone}
+              value={phone}
               autoFocus
               className="focus:ring-black focus:border-black sm:text-sm border-b border-gray-200 focus:ring-0 flex-1 border-r-0 border-t-0"
               placeholder=""
@@ -155,7 +156,7 @@ const LoginForm = (props) => {
               ></path>
             </svg>
           ) : (
-            "Sign In"
+            "Next"
           )}
         </button>
         <div className="text-center">

@@ -40,7 +40,7 @@ const AuthForm = (props) => {
           } else {
             setAuth(response.data);
             localStorage.setItem("isLoggedIn", true);
-            navigate(from, { replace: true });
+            if (props.page !== "cart") navigate(from, { replace: true });
           }
         })
         .catch((error) => {

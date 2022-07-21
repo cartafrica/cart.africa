@@ -9,7 +9,6 @@ import logoW from "assets/logo-w.svg";
 const Auth = () => {
   const { error } = useAuth();
   const [challenge, setChallenge] = useState("");
-  const [phone, setPhone] = useState("");
   const errorRef = useRef(null);
 
   useEffect(() => {
@@ -28,22 +27,17 @@ const Auth = () => {
           />
           <div className="">
             <h1 className="text-2xl font-bold text-center text-white mb-2">
-              Track your mood and reflect on your day
+              Shop faster. Shop better.
             </h1>
             <p className="text-white text-center">
-              Impeet viverra vivamus porttior ules ac vulte lectus velit sen
-              lectus ue
+              One-click checkout for social commerce.
             </p>
           </div>
         </div>
         <div className="bg-white flex-grow p-6 lg:p-24 justify-center items-start rounded-t-3xl lg:flex lg:ml-120 lg:rounded-none">
           <div className="flex flex-col mx-auto">
             {challenge === "" ? (
-              <LoginForm
-                setChallenge={setChallenge}
-                phone={phone}
-                setPhone={setPhone}
-              />
+              <LoginForm setChallenge={setChallenge} page="auth" />
             ) : (
               <AuthForm setChallenge={setChallenge} challenge={challenge} />
             )}
