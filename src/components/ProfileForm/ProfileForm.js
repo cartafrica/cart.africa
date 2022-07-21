@@ -101,7 +101,7 @@ const ProfileForm = (props) => {
           console.log(response);
           localStorage.setItem("user", JSON.stringify(response.data));
           setProfile(response.data);
-          props.next && navigate("/onboarding/delivery");
+          props.next && navigate(props.next);
           setSubmitSuccess(true);
           setLoading(false);
         })

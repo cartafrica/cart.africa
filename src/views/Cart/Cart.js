@@ -47,7 +47,7 @@ const Cart = () => {
             setIsLoggedIn(false);
           }
           if (user.Status === "onboarding") {
-            navigate("/onboarding/profile");
+            navigate("/onboarding/profile", {});
           }
           setProfile(user);
         })
@@ -67,8 +67,8 @@ const Cart = () => {
     if (!auth) {
       verifyAuth();
     } else {
-        user();
-        setIsLoggedIn(true);
+      user();
+      setIsLoggedIn(true);
       setIsLoading(false);
     }
   }, [auth]);
@@ -188,7 +188,9 @@ const Cart = () => {
               </p>
 
               <p className="font-semibold text-sm text-center mt-3 space-x-3 divide-x-2 divide-gray-400">
-                <span className="text-black ">Dashboard</span>
+                <Link to="/orders">
+                  <span className="text-black ">Dashboard</span>
+                </Link>
                 <span
                   className="text-black pl-3 cursor-pointer"
                   onClick={logout}

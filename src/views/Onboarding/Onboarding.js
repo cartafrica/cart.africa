@@ -2,7 +2,7 @@ import React from "react";
 import "./Onboarding.css";
 import ProfileForm from "components/ProfileForm/ProfileForm";
 import AddDeliveryForm from "components/AddDeliveryForm/AddDeliveryForm";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { LogoutIcon } from "@heroicons/react/outline";
 import useAuth from "hooks/useAuth";
 import logoW from "assets/logo-w.svg";
@@ -11,6 +11,8 @@ const Onboarding = () => {
   const { page } = useParams();
   const { setAuth, setProfile, setError } = useAuth();
   let navigate = useNavigate();
+  let location = useLocation();
+  const from = location.state?.from?.pathname || "/onboarding/delivery";
 
   const handleDeliverySubmit = () => {
     navigate("/cart");
@@ -123,7 +125,7 @@ const Onboarding = () => {
               We need these information now, so you don't have to enter them
               again.
             </p>
-            {page === "profile" && <ProfileForm next={true} />}
+            {page === "profile" && <ProfileForm next={from} />}
             {page === "delivery" && (
               <>
                 <AddDeliveryForm handle={handleDeliverySubmit} />
