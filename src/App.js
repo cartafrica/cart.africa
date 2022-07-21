@@ -19,9 +19,13 @@ import About from "views/Dashboard/Account/About";
 import Faq from "views/Dashboard/Account/Faq";
 
 function App() {
+  const checkLoggedIn = localStorage.getItem("isLoggedIn");
   return (
     <Routes>
-      <Route path="/auth" element={<Auth />} />
+      <Route
+        path="/auth"
+        element={checkLoggedIn ? <Navigate replace to="/orders" /> : <Auth />}
+      />
       <Route path="/cart/:id" element={<Cart />} />
 
       <Route element={<PersistLogin />}>
@@ -48,7 +52,10 @@ function App() {
           </Route>
         </Route>
       </Route>
-      <Route path="/" element={<Navigate replace to="/auth" />} />
+      <Route
+        path="/"
+        element={<Navigate replace to={checkLoggedIn ? "/orders" : "/auth"} />}
+      />
       <Route path="*" element={<Navigate replace to="/auth" />} />
     </Routes>
   );
