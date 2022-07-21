@@ -27,7 +27,7 @@ const Header = () => {
           <img src={icon} alt="cart.africa" className="h-8 block lg:hidden" />
         </div>
         <div className="pl-2">
-          <p className=" font-bold  ">Hi, {profile.FirstName}!</p>
+          <p className=" font-bold  ">Hi, {profile.firstName}!</p>
           <p className="text-gray-500 text-sm">
             {pathName.includes("orders") && "Orders"}
             {pathName.includes("account") && "Account"}

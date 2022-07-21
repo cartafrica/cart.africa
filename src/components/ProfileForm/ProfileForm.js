@@ -31,9 +31,9 @@ const ProfileForm = (props) => {
       .then((response) => {
         console.log("response ", response.data);
         setState({
-          firstName: !response.data.FirstName ? "" : response.data.FirstName,
-          lastName: !response.data.LastName ? "" : response.data.LastName,
-          email: !response.data.Email ? "" : response.data.Email,
+          firstName: !response.data.firstName ? "" : response.data.firstName,
+          lastName: !response.data.lastName ? "" : response.data.lastName,
+          email: !response.data.email ? "" : response.data.email,
         });
       })
       .finally(() => {
