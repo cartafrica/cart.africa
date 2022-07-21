@@ -3,10 +3,11 @@ import { LogoutIcon } from "@heroicons/react/outline";
 import useAuth from "hooks/useAuth";
 import icon from "assets/icon.svg";
 import logo from "assets/logo.svg";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const { profile, setAuth, setProfile, setError } = useAuth();
+  const navigate = useNavigate();
 
   const [pathName, setPathName] = useState("");
   const location = useLocation();

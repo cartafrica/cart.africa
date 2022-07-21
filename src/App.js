@@ -22,10 +22,7 @@ function App() {
   const checkLoggedIn = localStorage.getItem("isLoggedIn");
   return (
     <Routes>
-      <Route
-        path="/auth"
-        element={checkLoggedIn ? <Navigate replace to="/orders" /> : <Auth />}
-      />
+      <Route path="/auth" element={<Auth />} />
       <Route path="/cart/:id" element={<Cart />} />
 
       <Route element={<PersistLogin />}>
