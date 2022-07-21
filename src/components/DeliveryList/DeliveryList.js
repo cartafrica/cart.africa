@@ -15,7 +15,7 @@ const DeliveryList = (props) => {
       </div>
       <div>
         <Link
-          to="/dashboard/account/edit-delivery"
+          to="/account/edit-delivery"
           className="text-sm text-yellow-600"
         >
           Edit

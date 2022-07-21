@@ -18,7 +18,7 @@ const AuthForm = (props) => {
   );
   let navigate = useNavigate();
   let location = useLocation();
-  const from = location.state?.from?.pathname || "/dashboard/orders";
+  const from = location.state?.from?.pathname || "/orders";
 
   const handleCompleteLogin = (e) => {
     e?.preventDefault();

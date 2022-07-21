@@ -143,7 +143,7 @@ const Onboarding = () => {
                 <div
                   className="flex justify-center cursor-pointer my-5"
                   onClick={() => {
-                    navigate("/dashboard/orders");
+                    navigate("/orders");
                   }}
                 >
                   Skip

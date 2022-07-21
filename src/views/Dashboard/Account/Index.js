@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 import AccountMenu from "components/AccountMenu/AccountMenu";
@@ -12,20 +12,23 @@ import Delivery from "./Delivery";
 import AddDelivery from "./AddDelivery";
 import Payment from "./Payment";
 import useAuth from "hooks/useAuth";
+import { Outlet, useLocation, useParams } from "react-router-dom";
 
-const AccountIndex = (props) => {
+const AccountIndex = () => {
   const { profile, setAuth, setProfile, setError } = useAuth();
+  const [showMenu, setShowMenu] = useState(false);
+  const location = useLocation();
   const profileMenu = [
     {
-      to: "/dashboard/account/profile",
+      to: "/account/profile",
       name: "Manage Profile",
     },
     {
-      to: "/dashboard/account/delivery",
+      to: "/account/delivery",
       name: "Delivery Addresses",
     },
     {
-      to: "/dashboard/account/payment",
+      to: "/account/payment",
       name: "Payment Methods",
     },
   ];
@@ -35,21 +38,21 @@ const AccountIndex = (props) => {
       name: "Help and Support",
     },
     {
-      to: "/dashboard/account/faq",
+      to: "/account/faq",
       name: "FAQ",
     },
     {
-      to: "/dashboard/account/about",
+      to: "/account/about",
       name: "About",
     },
   ];
   const legalMenu = [
     {
-      to: "/dashboard/account/privacy",
+      to: "/account/privacy",
       name: "Privacy Policy",
     },
     {
-      to: "/dashboard/account/terms",
+      to: "/account/terms",
       name: "Terms and Conditions",
     },
   ];
@@ -60,11 +63,16 @@ const AccountIndex = (props) => {
     setError("You've been logged out!");
     setProfile({});
   };
+  useEffect(() => {
+    console.log(location.pathname);
+    location.pathname === "/account" ? setShowMenu(true) : setShowMenu(false);
+  }, [location]);
+
   return (
     <div className="flex">
       <div
         className={`flex flex-col ${
-          !props.page ? "w-full flex" : "hidden"
+          showMenu ? "w-full flex" : "hidden"
         } lg:flex lg:w-1/3`}
       >
         <AccountMenu menu={profileMenu} />
@@ -82,10 +90,10 @@ const AccountIndex = (props) => {
         </div>
       </div>
 
-      {!props.page ? (
+      {showMenu ? (
         <div
           className={`flex-1 p-5 flex-col items-center justify-center ${
-            props.page ? "w-full flex" : "hidden"
+            !showMenu ? "w-full flex" : "hidden"
           } lg:flex`}
         >
           <InformationCircleIcon className="h-10 w-10" />
@@ -93,15 +101,7 @@ const AccountIndex = (props) => {
         </div>
       ) : (
         <div className="w-full lg:w-2/3">
-          {props.page === "privacy" && <PrivacyPolicy />}
-          {props.page === "terms" && <Terms />}
-          {props.page === "about" && <About />}
-          {props.page === "faq" && <Faq />}
-          {props.page === "profile" && <ManageProfile />}
-          {props.page === "delivery" && <Delivery />}
-          {props.page === "payment" && <Payment />}
-          {props.page === "add-delivery" && <AddDelivery />}
-          {props.page === "edit-delivery" && <AddDelivery edit={true} />}
+          <Outlet />
         </div>
       )}
     </div>

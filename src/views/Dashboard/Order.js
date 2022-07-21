@@ -52,7 +52,7 @@ const Order = (props) => {
   return (
     <div className="h-full">
       <header className="py-1 px-5 flex">
-        <Link to="/dashboard/orders">
+        <Link to="/orders">
           <ChevronLeftIcon className="h-6 w-6 mr-4" />
         </Link>
         <p className=" font-semibold">
@@ -123,7 +123,7 @@ const Order = (props) => {
             </li>
           </ul>
 
-          <Link to="/dashboard/orders">
+          <Link to="/orders">
             <button
               className="bg-black w-full text-white my-3 py-3 px-4 rounded focus:outline-none focus:shadow-outline"
               type="submit"

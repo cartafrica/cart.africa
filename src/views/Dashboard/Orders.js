@@ -254,7 +254,7 @@ const Orders = (props) => {
               {orders.map((order, index) => {
                 return (
                   <li className="" key={index}>
-                    <Link to={"/dashboard/orders/" + order.id}>
+                    <Link to={"/orders/" + order.id}>
                       <div className="flex p-5" key={index}>
                         <div className="flex-none">
                           <div

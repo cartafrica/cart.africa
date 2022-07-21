@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Outlet, useNavigate, useParams } from "react-router-dom";
 import "./Dashboard.css";
 import FooterNav from "components/FooterNav/FooterNav";
 import Header from "components/Header/Header";
@@ -58,8 +58,7 @@ const Dashboard = () => {
     <div className="bg-white flex flex-col h-screen lg:w-3/4 mx-auto">
       <Header page={page} />
       <main className="flex-1 overflow-y-auto">
-        {page === "orders" && <Orders order={subpage} />}
-        {page === "account" && <AccountIndex page={subpage} />}
+        <Outlet />
       </main>
       <FooterNav page={page} />
     </div>

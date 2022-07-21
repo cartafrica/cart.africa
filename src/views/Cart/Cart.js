@@ -88,7 +88,7 @@ const Cart = () => {
     <div className="bg-white flex flex-grow lg:p-24 justify-center items-start">
       <div className="w-full lg:w-96">
         <div className="text-center p-6">
-          <Link to="/dashboard/orders" className="">
+          <Link to="/orders" className="">
             <img src={logo} alt="cart.africa" className="h-8 mx-auto text-3xl font-bold text-center text-white italic" />
           </Link>
         </div>
@@ -160,7 +160,7 @@ const Cart = () => {
           </ul>
           {isLoggedIn ? (
             <>
-              <Link to="/dashboard/orders">
+              <Link to="/orders">
                 <button
                   className="bg-black w-full text-white my-5 py-3 px-4 rounded focus:outline-none focus:shadow-outline"
                   type="submit"
