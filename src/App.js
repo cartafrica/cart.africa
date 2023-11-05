@@ -24,30 +24,28 @@ function App() {
     <Routes>
       <Route path="/auth" element={<Auth />} />
       <Route path="/cart/:id" element={<Cart />} />
-
-      <Route element={<PersistLogin />}>
-        <Route element={<RequireAuth />}>
-          <Route path="/onboarding/:page" element={<Onboarding />} />
-          <Route element={<Dashboard />}>
-            <Route path="/orders" element={<Orders />} />
-            <Route path="/orders/:page" element={<Order />} />
-            <Route element={<AccountIndex />}>
-              <Route path="/account" element={<ManageProfile />} />
-              <Route path="/account/privacy" element={<PrivacyPolicy />} />
-              <Route path="/account/terms" element={<Terms />} />
-              <Route path="/account/about" element={<About />} />
-              <Route path="/account/faq" element={<Faq />} />
-              <Route path="/account/profile" element={<ManageProfile />} />
-              <Route path="/account/delivery" element={<Delivery />} />
-              <Route path="/account/payment" element={<Payment />} />
-              <Route path="/account/add-delivery" element={<AddDelivery />} />
-              <Route
-                path="/account/edit-delivery"
-                element={<AddDelivery edit={true} />}
-              />
-            </Route>
-          </Route>
+      <Route path="/onboarding/:page" element={<Onboarding />} />
+      <Route element={<Dashboard />}>
+        <Route path="/orders" element={<Orders />} />
+        <Route path="/orders/:page" element={<Order />} />
+        <Route element={<AccountIndex />}>
+          <Route path="/account" element={<ManageProfile />} />
+          <Route path="/account/privacy" element={<PrivacyPolicy />} />
+          <Route path="/account/terms" element={<Terms />} />
+          <Route path="/account/about" element={<About />} />
+          <Route path="/account/faq" element={<Faq />} />
+          <Route path="/account/profile" element={<ManageProfile />} />
+          <Route path="/account/delivery" element={<Delivery />} />
+          <Route path="/account/payment" element={<Payment />} />
+          <Route path="/account/add-delivery" element={<AddDelivery />} />
+          <Route
+            path="/account/edit-delivery"
+            element={<AddDelivery edit={true} />}
+          />
         </Route>
+      </Route>
+      <Route element={<PersistLogin />}>
+        <Route element={<RequireAuth />}></Route>
       </Route>
       <Route
         path="/"

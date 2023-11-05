@@ -4,6 +4,7 @@ import { CheckIcon, ChevronDownIcon } from "@heroicons/react/outline";
 import "./LoginForm.css";
 import { login } from "services/network/lib/auth";
 import useAuth from "hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = (props) => {
   const { setError } = useAuth();
@@ -12,6 +13,7 @@ const LoginForm = (props) => {
   const [selected, setSelected] = useState(countries[0]);
   const [loading, setLoading] = useState(false);
   const inputRef = useRef(null);
+  let navigate = useNavigate();
 
   const toggleCountrySelect = () => {
     setCountrySelect(!countrySelect);
@@ -23,28 +25,29 @@ const LoginForm = (props) => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log(selected.dial_code + phone);
-    if (phone === "") {
-      setError("Phone number is required.");
-      inputRef.current.focus();
-    } else {
-      setLoading(true);
-      setError(false);
-      login({
-        phone: selected.dial_code + phone,
-        countryCode: selected.code,
-      })
-        .then((response) => {
-          console.log(response.data.challenge_id);
-          props.setChallenge(response.data.challenge_id);
-          setLoading(false);
-        })
-        .catch((error) => {
-          console.error("error ", error);
-          setError(error.message);
-          setLoading(false);
-        });
-    }
+    navigate("/orders", { replace: true });
+    // console.log(selected.dial_code + phone);
+    // if (phone === "") {
+    //   setError("Phone number is required.");
+    //   inputRef.current.focus();
+    // } else {
+    //   setLoading(true);
+    //   setError(false);
+    //   login({
+    //     phone: selected.dial_code + phone,
+    //     countryCode: selected.code,
+    //   })
+    //     .then((response) => {
+    //       console.log(response.data.challenge_id);
+    //       props.setChallenge(response.data.challenge_id);
+    //       setLoading(false);
+    //     })
+    //     .catch((error) => {
+    //       console.error("error ", error);
+    //       setError(error.message);
+    //       setLoading(false);
+    //     });
+    // }
   };
 
   return (

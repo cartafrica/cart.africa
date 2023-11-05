@@ -6,6 +6,7 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { LogoutIcon } from "@heroicons/react/outline";
 import useAuth from "hooks/useAuth";
 import logoW from "assets/logo-w.svg";
+import PaymentList from "components/PaymentList/PaymentList";
 
 const Onboarding = () => {
   const { page } = useParams();
@@ -128,7 +129,10 @@ const Onboarding = () => {
             {page === "profile" && <ProfileForm next={from} />}
             {page === "delivery" && (
               <>
-                <AddDeliveryForm handle={handleDeliverySubmit} />
+                <AddDeliveryForm
+                  handle={handleDeliverySubmit}
+                  next={"/onboarding/payment"}
+                />
                 <div
                   className="flex justify-center cursor-pointer my-5"
                   onClick={() => {
@@ -141,7 +145,9 @@ const Onboarding = () => {
             )}
             {page === "payment" && (
               <>
-                <ProfileForm />
+                <button className="bg-black w-full text-white my-3 py-3 rounded focus:outline-none focus:shadow-outline">
+                  Add Card
+                </button>
                 <div
                   className="flex justify-center cursor-pointer my-5"
                   onClick={() => {

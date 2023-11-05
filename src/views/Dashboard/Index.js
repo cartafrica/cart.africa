@@ -18,10 +18,10 @@ const Dashboard = () => {
     getProfile()
       .then((response) => {
         let user = response.data;
-        if (!user) {
-          navigate("/auth");
-        }
-        if (user.Status === "onboarding") {
+        // if (!user) {
+        //   navigate("/auth");
+        // }
+        if (user.status === "onboarding") {
           navigate("/onboarding/profile");
         }
         setProfile(user);
