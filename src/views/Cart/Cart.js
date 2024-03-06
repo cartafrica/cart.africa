@@ -131,7 +131,7 @@ const Cart = () => {
           </li>
         </ul>
         <div className="p-6">
-          {isLoggedIn && (
+          {!isLoggedIn && (
             <ul className="space-y-4">
               <li className="flex items-center space-x-2">
                 <div className="rounded-full bg-gray-200 p-1 text-black">
@@ -172,7 +172,7 @@ const Cart = () => {
               </li>
             </ul>
           )}
-          {isLoggedIn ? (
+          {!isLoggedIn ? (
             <>
               <Link to="/orders">
                 <button
