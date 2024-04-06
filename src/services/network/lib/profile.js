@@ -1,7 +1,7 @@
 import api from "../apiClient";
 
 export function getProfile() {
-  return api.get("account/me/info");
+  return api.get("api/v1/buyer/profile");
 }
 export function getAddresses() {
   return api.get("account/addresses");

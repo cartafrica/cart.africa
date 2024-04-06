@@ -17,6 +17,7 @@ import Payment from "views/Dashboard/Account/Payment";
 import AddDelivery from "views/Dashboard/Account/AddDelivery";
 import About from "views/Dashboard/Account/About";
 import Faq from "views/Dashboard/Account/Faq";
+import ThankYou from "views/Cart/ThankYou";
 
 function App() {
   const checkLoggedIn = localStorage.getItem("isLoggedIn");
@@ -24,6 +25,7 @@ function App() {
     <Routes>
       <Route path="/auth" element={<Auth />} />
       <Route path="/cart/:id" element={<Cart />} />
+      <Route path="/cart/:id/thankyou" element={<ThankYou />} />
       <Route path="/onboarding/:page" element={<Onboarding />} />
       <Route element={<Dashboard />}>
         <Route path="/orders" element={<Orders />} />

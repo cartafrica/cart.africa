@@ -1,8 +1,18 @@
 import axios from "axios";
-const BASE_URL = `https://dev.cart.africa/api/v1/`;
+const BASE_URL = `https://cartafrica.nw.r.appspot.com/`;
 const api = axios.create({
   baseURL: BASE_URL,
-  withCredentials: true,
+  headers: {
+    "Content-Type": "application/json",
+  },
+  // withCredentials: true,
+});
+
+// Add a request interceptor to inject the auth token for all requests
+api.interceptors.request.use(function (config) {
+  const token = localStorage.getItem("token");
+  config.headers["x-access-token"] = token ? token : "";
+  return config;
 });
 
 api.interceptors.response.use(

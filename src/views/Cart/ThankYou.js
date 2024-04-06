@@ -19,7 +19,7 @@ import CartAuthForm from "components/LoginForm/CartAuthForm";
 import AddDeliveryForm from "components/AddDeliveryForm/AddDeliveryForm";
 import AddressForm from "components/AddDeliveryForm/AddressForm";
 
-const Cart = () => {
+const ThankYou = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
@@ -32,13 +32,14 @@ const Cart = () => {
 
   useEffect(() => {
     const cartId = pathname.split("/").pop();
-    getCart(cartId)
-      .then((response) => {
-        setCartDetails(response.data);
-        console.log(response);
-        setIsLoading(false);
-      })
-      .catch((e) => {});
+    const getCart = () =>
+      getCart(cartId)
+        .then((response) => {
+          setCartDetails(response.data);
+          console.log(response);
+          setIsLoading(false);
+        })
+        .catch((e) => {});
   }, []);
 
   useEffect(() => {
@@ -74,7 +75,6 @@ const Cart = () => {
       if (paymentWindow) {
         const interval = setInterval(() => {
           if (paymentWindow.closed) {
-            navigate("/cart/" + cartId + "/thankyou");
             // window.location.href = "/checkout-success";
             clearInterval(interval);
           }
@@ -109,52 +109,61 @@ const Cart = () => {
     </div>
   ) : (
     <div className="bg-white flex flex-grow lg:p-24 justify-center items-start">
-      <div className="w-full lg:w-96">
+      <div className="w-full lg:w-96 p-6">
         <div className="text-center p-6">
           <Link to="/orders" className="">
             <img
               src={logo}
               alt="cart.africa"
-              className="h-8 mx-auto text-3xl font-bold text-center text-white italic"
+              className="h-6 mx-auto text-xl font-bold text-center text-white italic"
             />
           </Link>
         </div>
-        <div className="ml-5 mb-3">
-          <p className="text-gray-700 font-bold">{cartDetails?.seller.name}</p>
-          <a href="button" className="text-gray-700 text-sm">
-            Return Policy
-          </a>
+        <div className="flex">
+          <div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-12 h-12 -mt-1"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z"
+              />
+            </svg>
+          </div>
+          <div>
+            <p className="text-gray-700 font-bold text-sm">Store Name</p>
+            <p className="text-gray-700 text-sm">Order #18834992</p>
+          </div>
         </div>
-        {cartDetails?.items.map((item, index) => (
-          <ul key={index} className="bg-gray-200">
-            <li className="flex items-center space-x-4 p-4 border-b border-gray-300">
-              <div className="shrink-0">
-                <img
-                  src={
-                    item.photo ||
-                    `https://placehold.co/120x120?text=${getInitials(
-                      item.name
-                    )}&font=roboto`
-                  }
-                  className="rounded-full w-16 h-16"
-                  alt=""
-                />
-              </div>
-              <div className="flex-1">
-                <h4 className="text-gray-800">{item.name}</h4>
-                <small>Qty: {item.quantity}</small>
-              </div>
-              <h4 className="text-gray-800">
-                {formatValue(item.price * item.quantity)}
-              </h4>
-            </li>
+        <div className="border px-4 py-3 mt-4">
+          <p className="text-gray-700 font-medium text-xl">Thank you!</p>
+          {/* <p className="text-gray-700 text-xl">Your order is confirmed</p> */}
+          <p className="text-gray-700 text-sm">
+            Store name is getting your order ready. Come back to this page for
+            updates on your order status.
+          </p>
+        </div>
+        <div className="border px-4 py-3 mt-4">
+          <p className="text-gray-700 font-medium text-xl">
+            Shipping Information
+          </p>
+          <ul>
+            <li>Contact name</li>
+            <li>Phone number</li>
+            <li>Street name</li>
+            <li>City</li>
+            <li>Posta code</li>
+            <li>State</li>
+            <li>Country</li>
           </ul>
-        ))}
-        <div className="p-6">
-          <AddressForm
-            deliveryAddress={deliveryAddress}
-            setDeliveryAddress={setDeliveryAddress}
-          />
+        </div>
+        <div className="">
           {/* {isLoggedIn && (
             <ul className="space-y-4">
               <li className="flex items-center space-x-2">
@@ -196,31 +205,22 @@ const Cart = () => {
               </li>
             </ul>
           )} */}
+          <button
+            onClick={() => navigate("/orders")}
+            className="bg-black w-full text-white my-5 py-3 px-4 rounded focus:outline-none focus:shadow-outline"
+          >
+            Go to Dashboard
+          </button>
           {isLoggedIn ? (
-            <>
-              <button
-                onClick={handleCheckout}
-                className="bg-black w-full text-white my-5 py-3 px-4 rounded focus:outline-none focus:shadow-outline"
+            <p className="font-semibold text-sm text-center space-x-3 divide-x-2 divide-gray-400">
+              
+              <span
+                className="text-black cursor-pointer"
+                // onClick={logout}
               >
-                Checkout
-              </button>
-              <p className="text-gray-500 text-sm text-center">
-                We'll attempt to charge your selected payment method and send
-                your order details to vendor to process your order.
-              </p>
-
-              <p className="font-semibold text-sm text-center mt-3 space-x-3 divide-x-2 divide-gray-400">
-                <Link to="/orders">
-                  <span className="text-black ">Dashboard</span>
-                </Link>
-                <span
-                  className="text-black pl-3 cursor-pointer"
-                  // onClick={logout}
-                >
-                  Logout
-                </span>
-              </p>
-            </>
+                Logout
+              </span>
+            </p>
           ) : (
             <div className="mt-5">
               <CartAuthForm setIsLoggedIn={setIsLoggedIn} />
@@ -240,8 +240,8 @@ const Cart = () => {
   );
 };
 
-Cart.propTypes = {};
+ThankYou.propTypes = {};
 
-Cart.defaultProps = {};
+ThankYou.defaultProps = {};
 
-export default Cart;
+export default ThankYou;
