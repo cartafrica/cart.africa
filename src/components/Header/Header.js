@@ -16,6 +16,7 @@ const Header = () => {
     setAuth(false);
     setError("You've been logged out!");
     setProfile({});
+    navigate("/auth")
   };
   useEffect(() => {
     setPathName(location.pathname);
