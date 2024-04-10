@@ -119,10 +119,16 @@ const LoginForm = (props) => {
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
-      getProfile().then((response) => {
-        let user = response.data;
-        setIsLoggedIn(true);
-      });
+      getProfile()
+        .then((response) => {
+          let user = response.data;
+          setIsLoggedIn(true);
+        })
+        .catch((e) => {
+          console.log(e);
+          localStorage.removeItem("token");
+          setIsLoggedIn(false);
+        });
     }
   }, []);
 
